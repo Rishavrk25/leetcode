@@ -1,24 +1,26 @@
 class Solution {
-    public int compress(char[] chars) {
-        int n=chars.length;
+    public int compress(char[] arr) {
+        int n=arr.length;
         int i=0;
         int j=0;
-        String s="";
+        String str="";
         while(j<n){
-            if(chars[i]!=chars[j]){
-                s+=chars[i];
-                int len = j-i;
-                if(len>1) s+=len;
+            if(arr[i]==arr[j]){
+                j++;
+            }
+            else{
+                str=str+arr[i];
+                int len=j-i;
+                if(len>1) str=str+len;
                 i=j;
             }
-            else j++;
         }
-        s+=chars[i];
-        int len = j-i;
-        if(len>1) s+=len;
-        for(int k=0;k<s.length();k++){
-            chars[k]=s.charAt(k);
+        str=str+arr[i];
+        int len=j-i;
+        if(len>1) str=str+len;
+        for(int k=0;k<str.length();k++){
+            arr[k]=str.charAt(k);
         }
-        return s.length();
+        return str.length();
     }
 }
