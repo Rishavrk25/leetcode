@@ -9,7 +9,7 @@ class Solution {
             if(s.charAt(i)==s.charAt(j)) j++;
             else{
                 int len = j-i;
-                if(len>0) ans+=len;
+                ans+=len;
                 ans+=s.charAt(i);
                 i=j;
             }
