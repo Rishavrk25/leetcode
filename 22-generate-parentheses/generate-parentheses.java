@@ -1,12 +1,11 @@
 class Solution {
-    void helper(int n,String s, List<String> ans,int c,int i){
-        if(i==2*n){
-            if(c==0) ans.add(s);
+    void helper(int n,String s, List<String> ans,int open,int close){
+        if(s.length()==2*n){
+            ans.add(s);
             return;
         }
-        if(c<0) return;
-        helper(n,s+'(',ans,c+1,i+1);
-        helper(n,s+')',ans,c-1,i+1);
+        if(open<n) helper(n,s+'(',ans,open+1,close);
+        if(open>close) helper(n,s+')',ans,open,close+1);
     }
     public List<String> generateParenthesis(int n) {
         List<String> ans = new ArrayList<>();
