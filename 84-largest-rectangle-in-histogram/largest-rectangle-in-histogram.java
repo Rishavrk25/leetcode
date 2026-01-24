@@ -5,7 +5,7 @@ class Solution {
         List<Integer> nse = new ArrayList<>();
         for(int i=n-1;i>=0;i--){
             while(!st.isEmpty() && arr[st.peek()]>=arr[i]) st.pop();
-            if(st.isEmpty()) nse.add(0,n);
+            if(st.isEmpty()) nse.add(0,-1);
             else nse.add(0,st.peek());
             st.push(i);
         }
@@ -22,8 +22,8 @@ class Solution {
         for(int i=0;i<n;i++){
             int a = nse.get(i);
             int b = pse.get(i);
-            int diff =  a-b-1;
-            int area = diff * arr[i];
+            if(a==-1) a=n;
+            int area = (a-b-1) * arr[i];
             ans = Math.max(ans,area);
         }
         return ans;
