@@ -1,5 +1,5 @@
 class Solution {
-    void helper(int n,String s, List<String> ans,int open,int close){
+    void helper(int n,String s,List<String> ans,int open,int close){
         if(s.length()==2*n){
             ans.add(s);
             return;
