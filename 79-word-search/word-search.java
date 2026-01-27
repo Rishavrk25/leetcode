@@ -8,7 +8,7 @@ class Solution {
         for(int dir=0;dir<4;dir++){
             int i_=i+direction[dir][0];
             int j_=j+direction[dir][1];
-            ans = ans || helper(arr,i_,j_,word,s+arr[i][j],k+1,visited,n,m);
+            ans = ans || helper(arr,i_,j_,word,s+word.charAt(k),k+1,visited,n,m);
         }
         visited[i][j]=false;
 
