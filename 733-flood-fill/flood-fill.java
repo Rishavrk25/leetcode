@@ -10,9 +10,9 @@ class Solution {
         void bfs(int arr[][],int i,int j,int color){
         int n=arr.length;
         int m=arr[0].length;
-
         Queue<Pair> q = new LinkedList<>();
-        int old = arr[i][j];
+        int oldcolor = arr[i][j];
+        if (oldcolor == color) return;
         arr[i][j]=color;
         q.add(new Pair(i,j));
         int direction[][]={{0,1},{0,-1},{1,0},{-1,0}};
@@ -21,7 +21,7 @@ class Solution {
             for(int dir=0;dir<4;dir++){
                 int i_ = p.i+direction[dir][0];
                 int j_ = p.j+direction[dir][1];
-                if(i_<0 || i_>=n || j_<0 || j_>=m || arr[i_][j_]!=old || arr[i_][j_]==color) continue;
+                if(i_<0 || i_>=n || j_<0 || j_>=m || arr[i_][j_]!=oldcolor) continue;
                 q.add(new Pair(i_,j_));            
                 arr[i_][j_]=color;
             }
