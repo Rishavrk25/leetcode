@@ -7,16 +7,16 @@ class Pair{
     }
 }
 class Solution {
-    public int orangesRotting(int[][] adj) {
+    public int orangesRotting(int[][] arr) {
 
         Queue<Pair> q = new LinkedList<>();
-        int n=adj.length;
-        int m=adj[0].length;
+        int n=arr.length;
+        int m=arr[0].length;
         int fresh=0;
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
-                if(adj[i][j]==2) q.add(new Pair(i,j));
-                if(adj[i][j]==1) fresh++;
+                if(arr[i][j]==2) q.add(new Pair(i,j));
+                if(arr[i][j]==1) fresh++;
             }
         }
         int direction[][]={{0,1},{0,-1},{1,0},{-1,0}};
@@ -29,8 +29,8 @@ class Solution {
                 for(int dir=0;dir<4;dir++){
                     int i_ = p.i + direction[dir][0];
                     int j_ = p.j + direction[dir][1];
-                    if(i_<0 || i_>=n || j_<0 || j_>=m || adj[i_][j_]!=1) continue;
-                    adj[i_][j_]=2;
+                    if(i_<0 || i_>=n || j_<0 || j_>=m || arr[i_][j_]!=1) continue;
+                    arr[i_][j_]=2;
                     fresh--;
                     q.add(new Pair(i_,j_));
                 }
