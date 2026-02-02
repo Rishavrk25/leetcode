@@ -21,7 +21,6 @@ class Solution {
         // Bfs
         Queue<String> q = new LinkedList<>();
         q.add(beginWord);
-        // set.remove(beginWord);
         int level = 0;
         while(!q.isEmpty()){
             int size = q.size();
