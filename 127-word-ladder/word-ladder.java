@@ -16,9 +16,12 @@ class Solution {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         // copy wordList to set
         Set<String> set = new HashSet<>(wordList);
+        if(!set.contains(endWord)) return 0;
+
         // Bfs
         Queue<String> q = new LinkedList<>();
         q.add(beginWord);
+        // set.remove(beginWord);
         int level = 0;
         while(!q.isEmpty()){
             int size = q.size();
