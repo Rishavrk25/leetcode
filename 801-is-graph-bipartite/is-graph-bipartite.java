@@ -5,7 +5,7 @@ class Solution {
                 color[nei] = 1-color[i];
                 if(!dfs(graph,color,nei)) return false;
             }
-            else if(color[nei]==color[i]) return false;
+            if(color[nei]==color[i]) return false;
         }
         return true;
     }
