@@ -2,11 +2,9 @@ class Solution {
     public int shortestPathBinaryMatrix(int[][] arr) {
         int n=arr.length;
         int m=arr[0].length;
-        if(arr[0][0]!=0 || arr[n-1][m-1]!=0) return -1;
-        // boolean visited[][] = new boolean[n][m];
+        if(arr[0][0]!=0) return -1;
         Queue<int[]> q = new LinkedList<>();
         q.add(new int[]{0,0});
-        // visited[0][0]=true;
         int direction[][] = {{0,1},{0,-1},{1,0},{-1,0},{1,1},{-1,-1},{-1,1},{1,-1}};
         int dist[][] = new int[n][m];
         for(int a[]:dist) Arrays.fill(a,Integer.MAX_VALUE);
