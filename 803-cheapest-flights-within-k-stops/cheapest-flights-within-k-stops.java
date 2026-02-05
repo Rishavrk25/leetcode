@@ -8,7 +8,7 @@ class Solution {
             int wt = a[2];
             adj.get(u).add(new int[]{v,wt});
         }
-        PriorityQueue<int[]> q = new PriorityQueue<>((a,b)->Integer.compare(a[2],b[2]));
+        Queue<int[]> q = new LinkedList<>();
         q.add(new int[]{src,0,0}); // v,wt,stops
         int dist[] = new int[n];
         Arrays.fill(dist,Integer.MAX_VALUE);
