@@ -12,12 +12,13 @@ class Solution {
             int t[] = pq.remove();
             int i=t[0];
             int j=t[1];
+            int diff=t[2];
             for(int dir[] : direction){
                 int i_ = i + dir[0];
                 int j_ = j + dir[1];
                 if(i_<0 || j_<0 || i_>=n || j_>=m) continue;
                 int absDiff = Math.abs(arr[i_][j_]-arr[i][j]);
-                int maxAbsDiff = Math.max(absDiff,dist[i][j]);
+                int maxAbsDiff = Math.max(absDiff,diff);
                 if(maxAbsDiff < dist[i_][j_]){
                     dist[i_][j_] = maxAbsDiff;
                     pq.add(new int[]{i_,j_,maxAbsDiff});
