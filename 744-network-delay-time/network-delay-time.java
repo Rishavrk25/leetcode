@@ -16,11 +16,12 @@ class Solution {
         while(!pq.isEmpty()){
             int p[] = pq.remove();
             int u=p[0];
+            int time = p[1];
             for(int nei[]:adj.get(u)){
                 int v=nei[0];
                 int wt=nei[1];
-                if(dist[u]+wt<dist[v]){
-                    dist[v]=dist[u]+wt;
+                if(time+wt<dist[v]){
+                    dist[v]=time+wt;
                     pq.add(new int[]{v,dist[v]});
                 }
             }
