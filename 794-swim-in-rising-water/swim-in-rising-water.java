@@ -17,9 +17,10 @@ class Solution {
                 int i_ = i+dir[0];
                 int j_ = j+dir[1];
                 if(i_<0 || i_>=n || j_<0 || j_>=n) continue;
-                if(Math.max(time,arr[i_][j_]) < dist[i_][j_]){
-                    dist[i_][j_]=Math.max(time,arr[i_][j_]);
-                    q.add(new int[]{i_,j_,Math.max(time,arr[i_][j_])});
+                int total = Math.max(time,arr[i_][j_]);
+                if(total < dist[i_][j_]){
+                    dist[i_][j_]=total;
+                    q.add(new int[]{i_,j_,total});
                 }
             }
         }
