@@ -12,7 +12,7 @@ class Solution {
             int i=t[0];
             int j=t[1];
             int time=t[2];
-
+            if(time>dist[i][j]) continue;
             for(int dir[]:directions){
                 int i_ = i+dir[0];
                 int j_ = j+dir[1];
