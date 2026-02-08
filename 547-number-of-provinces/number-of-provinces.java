@@ -3,7 +3,7 @@ class Solution {
     int size[];
     int find(int a){
         if(parent[a]==a) return a;
-        return find(parent[a]);
+        return parent[a]=find(parent[a]);
     }
     void union(int a,int b){
         a = find(a);
@@ -11,9 +11,11 @@ class Solution {
         if(a!=b){
             if(size[a] > size[b]){
                 parent[b]=a;
+                size[a]+=size[b];
             }
             else{
                 parent[a]=b;
+                size[b]+=size[b];
             }
         }
     }
