@@ -15,7 +15,7 @@ class Solution {
             }
             else{
                 parent[a]=b;
-                size[b]+=size[b];
+                size[b]+=size[a];
             }
         }
     }
@@ -35,7 +35,7 @@ class Solution {
         }
         int c=0;
         for(int i=1;i<n+1;i++){
-            if(parent[i]==i) c++;
+            if(find(i)==i) c++;
         }
         return c;
     }
