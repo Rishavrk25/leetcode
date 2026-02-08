@@ -1,5 +1,6 @@
 class Solution {
     int parent[];
+    int size[];
     int find(int a){
         if(parent[a]==a) return a;
         return find(parent[a]);
@@ -8,14 +9,21 @@ class Solution {
         a = find(a);
         b = find(b);
         if(a!=b){
-            parent[b]=a;
+            if(size[a] > size[b]){
+                parent[b]=a;
+            }
+            else{
+                parent[a]=b;
+            }
         }
     }
     public int findCircleNum(int[][] adj) {
         int n=adj.length;
         parent = new int[n+1];
+        size = new int[n+1];
         for(int i=1;i<n+1;i++){
             parent[i]=i;
+            size[i]=1;
         }
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
