@@ -1,4 +1,5 @@
 class Solution {
+    // Tarjan's Algorithm
     int timer=1;
     void dfs(int node,int parent,boolean vis[],List<List<Integer>> adj,int tin[],int low[],List<List<Integer>> bridges){
         vis[node]=true;
@@ -13,7 +14,7 @@ class Solution {
                 }
             }
             else{
-                low[node] = Math.min(low[node], low[nei]);
+                low[node] = Math.min(low[node], tin[nei]);
             }
         }
     }
@@ -27,8 +28,8 @@ class Solution {
             adj.get(v).add(u);
         }
         boolean vis[] = new boolean[n];
-        int tin[] = new int[n];
-        int low[] = new int[n];
+        int tin[] = new int[n]; // time of insertion (Discovery time)
+        int low[] = new int[n]; // From this node, how far back in DFS tree can I go?
         List<List<Integer>> bridges = new ArrayList<>();
         dfs(0,-1,vis,adj,tin,low,bridges);
         return bridges;
