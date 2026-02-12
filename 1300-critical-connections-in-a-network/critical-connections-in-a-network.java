@@ -14,7 +14,7 @@ class Solution {
                 }
             }
             else{
-                low[node] = Math.min(low[node], low[nei]);
+                low[node] = Math.min(low[node], tin[nei]);
             }
         }
     }
