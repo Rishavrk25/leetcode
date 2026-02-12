@@ -1,28 +1,33 @@
 class Solution {
+    boolean check(int arr[][],boolean visited[][],int i,int j,int time){
+        int n=arr.length;
+        if(i==n-1 && j==n-1) return true;
+        visited[i][j]=true;
+        int dir[][]={{0,1},{0,-1},{1,0},{-1,0}};
+        for(int d[]:dir){
+            int ni=i+d[0];
+            int nj=j+d[1];
+            if(ni<0 || ni>=n || nj<0 || nj>=n || visited[ni][nj] || arr[ni][nj]>time) continue;
+            if(check(arr,visited,ni,nj,time)) return true;
+        }
+        return false;
+    }
     public int swimInWater(int[][] arr) {
         int n=arr.length;
-        PriorityQueue<int[]> q = new PriorityQueue<>((a,b)->Integer.compare(a[2],b[2]));
-        q.add(new int[]{0,0,arr[0][0]}); // i,j,wt
-        int dist[][] = new int[n][n];
-        for(int a[] : dist) Arrays.fill(a,Integer.MAX_VALUE);
-        dist[0][0]=arr[0][0];
-        int dir[][]={{0,1},{0,-1},{1,0},{-1,0}};
-        while(!q.isEmpty()){
-            int t[]=q.remove();
-            int i=t[0];
-            int j=t[1];
-            int cost=t[2];
-            for(int d[]:dir){
-                int ni=i+d[0];
-                int nj=j+d[1];
-                if(ni<0 || ni>=n || nj<0 || nj>=n) continue;
-                int total = Math.max(cost,arr[ni][nj]);
-                if(total < dist[ni][nj]){
-                    dist[ni][nj]=total;
-                    q.add(new int[]{ni,nj,total});
-                }
+        int max=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                max=Math.max(max,arr[i][j]);
             }
         }
-        return dist[n-1][n-1];
+        int l=0;
+        int h=max;
+        while(l<h){
+            boolean visited[][] = new boolean[n][n];
+            int m=l+(h-l)/2;
+            if(arr[0][0]<=m && check(arr,visited,0,0,m)) h=m;
+            else l=m+1;
+        }
+        return h;
     }
 }
