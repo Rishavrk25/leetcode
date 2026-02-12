@@ -1,6 +1,6 @@
 class Solution {
     // Tarjan's Algorithm
-    int timer=1;
+    int timer=0;
     void dfs(int node,int parent,boolean vis[],List<List<Integer>> adj,int tin[],int low[],List<List<Integer>> bridges){
         vis[node]=true;
         tin[node]=low[node]=timer++;
@@ -14,7 +14,7 @@ class Solution {
                 }
             }
             else{
-                low[node] = Math.min(low[node], tin[nei]);
+                low[node] = Math.min(low[node], low[nei]);
             }
         }
     }
