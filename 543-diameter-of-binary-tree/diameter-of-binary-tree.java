@@ -22,7 +22,7 @@ class Solution {
     }
     int max=0;
     public int diameterOfBinaryTree(TreeNode root) {
-        if(root==null) return max;
+        if(root==null) return 0;
         int l=level(root.left);
         int r=level(root.right);
         int d=l+r;
