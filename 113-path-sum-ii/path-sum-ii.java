@@ -23,8 +23,10 @@ class Solution {
                 ans.add(new ArrayList<>(list));
             }
         }
-        helper(root.left,sum,t,list,ans);
-        helper(root.right,sum,t,list,ans);
+        else{
+            helper(root.left,sum,t,list,ans);
+            helper(root.right,sum,t,list,ans);
+        }
         list.remove(list.size()-1);
     }
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
