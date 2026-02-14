@@ -24,8 +24,8 @@ class Solution {
                 list.remove(list.size()-1);
                 return;
             }
-            // list.remove(list.size()-1);
-            // return;
+            list.remove(list.size()-1);
+            return;
         }
         // else{
             helper(root.left,sum,t,list,ans);
