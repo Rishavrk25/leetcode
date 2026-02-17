@@ -14,16 +14,19 @@
  * }
  */
 class Solution {
-    int helper(TreeNode root,long sum,int t){
-        if(root==null) return 0;
+    int c=0;
+    void helper(TreeNode root,long sum,int t){
+        if(root==null) return;
         sum+=root.val;
-        int count=0;
-        if(sum==t) count++;
-        count+= helper(root.left,sum,t)+helper(root.right,sum,t);
-        return count;
+        if(sum==t) c++;
+        helper(root.left,sum,t);
+        helper(root.right,sum,t);
     }
     public int pathSum(TreeNode root, int t) {
         if(root==null) return 0;
-        return helper(root,0,t) + pathSum(root.left,t) + pathSum(root.right,t);
+        helper(root,0,t);
+        pathSum(root.left,t);
+        pathSum(root.right,t);
+        return c;
     }
 }
