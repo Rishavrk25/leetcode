@@ -21,12 +21,9 @@ class Solution {
             if(sum==t) return true;
             return false;
         }
-        boolean l = helper(root.left,sum,t);
-        boolean r = helper(root.right,sum,t);
-        return l||r;
+        return helper(root.left,sum,t) || helper(root.right,sum,t);
     }
     public boolean hasPathSum(TreeNode root, int targetSum) {
-        if(root==null) return false;
         return helper(root,0,targetSum);
     }
 }
