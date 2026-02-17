@@ -21,8 +21,10 @@ class Solution {
         if(root.left==null && root.right==null){
             if(sum==t) ans.add(new ArrayList<>(list));
         }
-        helper(root.left,sum,t,ans,list);
-        helper(root.right,sum,t,ans,list);
+        else{
+            helper(root.left,sum,t,ans,list);
+            helper(root.right,sum,t,ans,list);
+        }
         list.remove(list.size()-1);
     }
     public List<List<Integer>> pathSum(TreeNode root, int t) {
