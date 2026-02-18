@@ -8,19 +8,17 @@
  * }
  */
 class Solution {
-    boolean check(TreeNode root,TreeNode node){
-        if(root==null) return false;
-        if(root==node) return true;
-        return check(root.left,node) || check(root.right,node);
+    TreeNode helper(TreeNode root,TreeNode p,TreeNode q){
+        if(root==null) return null;
+        if(root==p || root==q) return root;
+        TreeNode l = helper(root.left,p,q);
+        TreeNode r = helper(root.right,p,q);
+        if(l!=null && r!=null) return root;
+        else if(r==null) return l;
+        else return r;
+
     }
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(root==p || root==q) return root;
-        boolean a = check(root.left,p); // p exists in LST
-        boolean b = check(root.right,q); // q exists in RST
-        if((a && b) || (!a && !b)) return root; // p and q exists in opposite sides of root
-        else{ // p and q exists on the same side
-            if(a) return lowestCommonAncestor(root.left,p,q); // p,q exists in LST
-            return lowestCommonAncestor(root.right,p,q); // p,q exists in RST
-        }
+        return helper(root,p,q);
     }
 }
