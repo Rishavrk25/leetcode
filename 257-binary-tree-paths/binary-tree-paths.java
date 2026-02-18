@@ -13,21 +13,31 @@
  *     }
  * }
  */
-class Solution {
-    void helper(TreeNode root,List<String> ans,String s){
-        if(root==null) return;
-        if(s.length()!=0) s+="->";
-        s+=root.val;
-        if(root.left==null && root.right==null){
-            ans.add(s);
-            return;
-        }
-        helper(root.left,ans,s);
-        helper(root.right,ans,s);
+class Pair{
+    TreeNode node;
+    String path;
+    Pair(TreeNode node,String path){
+        this.node=node;
+        this.path=path;
     }
+}
+class Solution {
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> ans = new ArrayList<>();
-        helper(root,ans,"");
+        Queue<Pair> q = new LinkedList<>();
+        q.add(new Pair(root,""));
+        while(!q.isEmpty()){
+            Pair p = q.remove();
+            TreeNode node = p.node;
+            String path = p.path;
+            if(path.length()!=0) path+="->";
+            path+=node.val;
+            if(node.left==null && node.right==null){
+                ans.add(path);
+            }
+            if(node.left!=null) q.add(new Pair(node.left,path));
+            if(node.right!=null) q.add(new Pair(node.right,path));
+        }
         return ans;
     }
 }
