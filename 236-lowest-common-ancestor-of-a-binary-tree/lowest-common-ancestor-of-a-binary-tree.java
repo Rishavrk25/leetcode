@@ -14,7 +14,7 @@ class Solution {
         return check(root.left,node) || check(root.right,node);
     }
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(root==null) return root;
+        // if(root==null) return root;
         if(root==p || root==q) return root;
         boolean a = check(root.left,p); // p exists in LST
         boolean b = check(root.right,q); // q exists in RST
