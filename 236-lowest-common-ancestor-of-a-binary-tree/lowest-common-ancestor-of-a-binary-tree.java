@@ -19,8 +19,8 @@ class Solution {
         boolean b = check(root.right,q); // q exists in RST
         if((a && b) || (!a && !b)) return root; // p and q exists in opposite sides of root
         else{ // p and q exists on the same side
-            if(a) return lowestCommonAncestor(root.left,p,q); // p,q exists in LST
-            return lowestCommonAncestor(root.right,p,q); // p,q exists in RST
+            if(b) return lowestCommonAncestor(root.right,p,q); // p,q exists in LST
+            return lowestCommonAncestor(root.left,p,q); // p,q exists in RST
         }
     }
 }
