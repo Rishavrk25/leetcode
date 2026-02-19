@@ -1,10 +1,8 @@
 class Solution {
-    public int pivotIndex(int[] nums) {
-        int n=nums.length;
-        int pre[] = new int[n];
-        pre[0]=nums[0];
+    public int pivotIndex(int[] pre) {
+        int n=pre.length;
         for(int i=1;i<n;i++){
-            pre[i] = nums[i] + pre[i-1];
+            pre[i] +=  pre[i-1];
         }
         for(int i=0;i<n;i++){
             int leftSum = (i==0) ? 0 : pre[i-1];
