@@ -8,7 +8,7 @@ class Solution {
         while(j<n){
             int ch= arr[j];
             if(ch==0) zeros++;
-            while(zeros > k){
+            if(zeros > k){
                 if(arr[i]==0) zeros--;
                 i++;
             }
