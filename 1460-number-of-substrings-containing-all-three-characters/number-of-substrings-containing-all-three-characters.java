@@ -9,11 +9,10 @@ class Solution {
             char ch = s.charAt(j);
             freq[ch-'a']++;
             while(freq[0]>0 && freq[1]>0 && freq[2]>0){
-                c+=n-j;
                 freq[s.charAt(i)-'a']--;
                 i++;
             }
-            // c+=i;
+            c+=i;
             j++;
         }
         return c;
