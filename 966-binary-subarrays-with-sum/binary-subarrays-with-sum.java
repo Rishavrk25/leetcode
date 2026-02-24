@@ -1,16 +1,23 @@
 class Solution {
-    public int numSubarraysWithSum(int[] arr, int k) {
+    int atMostK(int arr[],int k){
+        if(k<0) return 0;
         int n=arr.length;
-        Map<Integer,Integer> map = new HashMap<>(); // sum,freq
-        map.put(0,1);
-        int sum=0;
+        int i=0;
+        int j=0;
         int c=0;
-        for(int i=0;i<n;i++){
-            sum+=arr[i];
-            if(map.containsKey(sum-k)) c+=map.get(sum-k);
-            if(!map.containsKey(sum)) map.put(sum,1);
-            else map.put(sum,map.get(sum)+1);
+        int sum=0;
+        while(j<n){
+            sum+=arr[j];
+            while(sum>k){
+                sum-=arr[i];
+                i++;
+            }
+            c+=(j-i+1);
+            j++;
         }
         return c;
+    }
+    public int numSubarraysWithSum(int[] arr, int k) {
+        return atMostK(arr,k)-atMostK(arr,k-1);
     }
 }
