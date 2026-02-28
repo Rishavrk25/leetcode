@@ -16,8 +16,8 @@ class Solution {
         while(j<n){
             char ch=s.charAt(j);
             if(map.containsKey(ch)){
-                if(map.get(ch)>0) c--;
                 map.put(ch,map.get(ch)-1);
+                if(map.get(ch)>=0) c--;
             }
             while(c==0){
                 if(ans.equals("") || (j-i+1)<ans.length()){
