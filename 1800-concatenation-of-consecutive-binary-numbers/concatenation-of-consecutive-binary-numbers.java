@@ -23,13 +23,13 @@ class Solution {
         return ans;
     }
     public int concatenatedBinary(int n) {
-        StringBuilder binary[] = new StringBuilder[(int)1e5+1];
-        for(int i=1;i<=n;i++){
-            binary[i] = intToBinary(i);
-        }
+        // StringBuilder binary[] = new StringBuilder[(int)1e5+1];
+        // for(int i=1;i<=n;i++){
+        //     binary[i] = 
+        // }
         StringBuilder concat =new StringBuilder();
         for(int i=1;i<=n;i++){
-            concat.append(binary[i]);
+            concat.append(intToBinary(i));
         }
         long ans = binaryToInt(concat) ;
         return (int)ans ;
