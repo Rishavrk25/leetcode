@@ -22,32 +22,30 @@ class Solution {
     public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
         Map<TreeNode,TreeNode> map = new HashMap<>(); // node,parent
         helper(root,map);
+        // bfs
         Queue<TreeNode> q = new LinkedList<>();
         q.add(target);
-        Set<TreeNode> set = new HashSet<>(); // visited
-        set.add(target);
+        Set<TreeNode> visited = new HashSet<>();
+        visited.add(target);
         int level=0;
         List<Integer> ans = new ArrayList<>();
         while(!q.isEmpty()){
             int size = q.size();
-            if(level==k){
-                while(!q.isEmpty()) ans.add(q.remove().val);
-                return ans;
-            }
-            for(int i=0;i<size;i++){
+            while(size-->0){
                 TreeNode node = q.remove();
-                if(node.left!=null && !set.contains(node.left)){
+                if(level==k) ans.add(node.val);
+                if(node.left!=null && !visited.contains(node.left)){
                     q.add(node.left);
-                    set.add(node.left);
+                    visited.add(node.left);
                 }
-                if(node.right!=null && !set.contains(node.right)){
+                if(node.right!=null && !visited.contains(node.right)){
                     q.add(node.right);
-                    set.add(node.right);
+                    visited.add(node.right);
                 }
                 TreeNode parent = map.get(node);
-                if(parent!=null && !set.contains(parent)){
-                    q.add(map.get(node));
-                    set.add(map.get(node));
+                if(parent!=null && !visited.contains(parent)){
+                    q.add(parent);
+                    visited.add(parent);
                 }
             }
             level++;
