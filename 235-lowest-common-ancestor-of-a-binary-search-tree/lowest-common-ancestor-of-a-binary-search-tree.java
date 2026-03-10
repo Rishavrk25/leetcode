@@ -9,16 +9,9 @@
  */
 
 class Solution {
-    TreeNode helper(TreeNode root,TreeNode p,TreeNode q){
-        if(root==null) return null;
-        if(root==p || root==q) return root;
-        TreeNode l = helper(root.left,p,q);
-        TreeNode r = helper(root.right,p,q);
-        if(l==null) return r;
-        else if(r==null) return l;
-        else return root;
-    }
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        return helper(root,p,q);
+        if(p.val<root.val && q.val<root.val) return lowestCommonAncestor(root.left,p,q);
+        else if(p.val>root.val && q.val>root.val) return lowestCommonAncestor(root.right,p,q);
+        else return root;
     }
 }
