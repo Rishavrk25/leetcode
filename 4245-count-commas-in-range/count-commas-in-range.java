@@ -6,7 +6,8 @@ class Solution {
         int ans=0;
         for(int i=1000;i<=n;i++){
             int d = (int)Math.log10(i) + 1;
-            ans += (d-1)/3;
+            ans += (d)/3;
+            if(d%3==0) ans--;
         }
         return ans;
     }
