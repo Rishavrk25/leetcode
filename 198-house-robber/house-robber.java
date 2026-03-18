@@ -1,6 +1,5 @@
 class Solution {
     int helper(int arr[],int n,int dp[]){
-        if(n<0) return 0;
         if(n==0) return arr[0];
         if(n==1) return Math.max(arr[0],arr[1]);
         if(dp[n]!=-1) return dp[n];
