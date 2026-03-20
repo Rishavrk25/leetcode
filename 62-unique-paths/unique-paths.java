@@ -1,23 +1,23 @@
 class Solution {
     // m -> rows
     // n -> cols
-    int helper(int i,int j,int m,int n,int dp[][]){
-        if(i==m-1 && j==n-1) return 1;
-        if(dp[i][j]!=-1) return dp[i][j];
-        int dir[][] = {{0,1},{1,0}};
+    int helper(int m,int n,int dp[][]){
+        if(m==0 && n==0) return 1;
+        if(dp[m][n]!=-1) return dp[m][n];
+        int dir[][] = {{0,-1},{-1,0}};
         int ans=0;
         for(int d[] : dir){
-            int ni = i + d[0];
-            int nj = j + d[1];
-            if(ni<m && nj<n && ni>=0 && nj>=0){
-                ans+=helper(ni,nj,m,n,dp);
+            int m_ = m + d[0];
+            int n_ = n + d[1];
+            if(m_>=0 && n_>=0){
+                ans+=helper(m_,n_,dp);
             }
         }
-        return dp[i][j]=ans;
+        return dp[m][n]=ans;
     }
     public int uniquePaths(int m, int n) {
         int dp[][] = new int[m][n];
         for(int row[] : dp) Arrays.fill(row,-1);
-        return helper(0,0,m,n,dp);
+        return helper(m-1,n-1,dp);
     }
 }
