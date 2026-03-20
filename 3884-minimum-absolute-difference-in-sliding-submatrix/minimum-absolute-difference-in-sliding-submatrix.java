@@ -26,8 +26,6 @@ class Solution {
                 }
             }
         }
-        
-        if(k==1) return res;
         return res;
     }
 }
