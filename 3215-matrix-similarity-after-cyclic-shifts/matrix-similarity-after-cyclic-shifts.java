@@ -8,6 +8,7 @@ class Solution {
                 original[i][j]=arr[i][j];
             }
         }
+        k = k%n;
         while(k-->0){
             for(int i=0;i<m;i++){
                 if(i%2==0){
