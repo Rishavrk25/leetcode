@@ -15,12 +15,10 @@ class Solution {
         if(total%2!=0) return false;
         int target = total/2;
         int n=nums.length;
-        int dp[][] = new int[n][total];
+        int dp[][] = new int[n][target+1];
         for(int row[]:dp) Arrays.fill(row,-1);
         return helper(nums,n-1,target,dp);
-        // for(int j=0;j<total;j++){
-        //     if(j == total-j) dp[0][j]=1;
-        // }
+        // dp[0][0]=1;
         // for(int i=1;i<n;i++){
         //     for(int j=0;j<total;j++){
         //         int take = 0;
