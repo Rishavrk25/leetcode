@@ -3,7 +3,7 @@ class Solution {
         if(i==0) return sum==total-sum;
         if(dp[i][sum]!=-1) return dp[i][sum]==1;
         boolean take = false;
-        if(sum+arr[i]<total) take=helper(arr,i-1,sum+arr[i],total,dp);
+        if(sum+arr[i]<=total) take=helper(arr,i-1,sum+arr[i],total,dp);
         boolean skip = helper(arr,i-1,sum,total,dp);
         boolean ans = take || skip;
         dp[i][sum]=ans?1:0;
