@@ -20,9 +20,7 @@ class Solution {
         // for(int row[]:dp) Arrays.fill(row,-1);
         // return helper(nums,n-1,target,dp);
         for(int i=0;i<n;i++) dp[i][0]=1;
-        for(int j=0;j<target+1;j++){
-            if(nums[0]==j) dp[0][j]=1;
-        }
+        if(nums[0]<=target) dp[0][nums[0]]=1;
         for(int i=1;i<n;i++){
             for(int j=1;j<target+1;j++){
                 int take = 0;
