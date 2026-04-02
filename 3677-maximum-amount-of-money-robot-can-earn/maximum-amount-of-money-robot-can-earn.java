@@ -6,20 +6,19 @@ class Solution {
         }
         if(dp[i][j][neutralize]!=Integer.MIN_VALUE) return dp[i][j][neutralize];
         int dir[][] = {{0,1},{1,0}};
-        int max = -(int)1e9;
+        int max = Integer.MIN_VALUE;
         for(int d[]:dir){
             int ni = i + d[0];
             int nj = j + d[1];
             if(ni<0 || nj<0 || ni>=m || nj>=n) continue;
             int cost = 0;
-            int temp = helper(arr,m,n,ni,nj,neutralize,dp);
             if(arr[i][j]>=0){
-                cost = arr[i][j] + temp;
+                cost = arr[i][j] + helper(arr,m,n,ni,nj,neutralize,dp);
             }
             else{
-                int a=-(int)1e9;
+                int a=Integer.MIN_VALUE;
                 if(neutralize>0) a = helper(arr,m,n,ni,nj,neutralize-1,dp);
-                int b = arr[i][j] + temp;
+                int b = arr[i][j] + helper(arr,m,n,ni,nj,neutralize,dp);
                 cost = Math.max(a,b);
             }
             max = Math.max(max,cost);
