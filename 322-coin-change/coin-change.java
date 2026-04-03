@@ -6,9 +6,9 @@ class Solution {
         }
         if(dp[i][amount]!=-1) return dp[i][amount];
         int take = (int)1e9;
-        if(amount-arr[i]>=0) take = 1+helper(arr,amount-arr[i],i,dp);
+        if(amount-arr[i]>=0) take = helper(arr,amount-arr[i],i,dp);
         int skip = helper(arr,amount,i-1,dp);
-        return dp[i][amount] = Math.min(take,skip);
+        return dp[i][amount] = take+skip;
     }
     public int coinChange(int[] arr, int amount) {
         int n=arr.length;
