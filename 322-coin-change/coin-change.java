@@ -13,8 +13,23 @@ class Solution {
     public int coinChange(int[] arr, int amount) {
         int n=arr.length;
         int dp[][] = new int[n][amount+1];
-        for(int row[]:dp) Arrays.fill(row,-1);
-        int ans=helper(arr,amount,arr.length-1,dp);
+        // for(int row[]:dp) Arrays.fill(row,-1);
+        // int ans=helper(arr,amount,arr.length-1,dp);
+        // if(ans==(int)1e9) return -1;
+        // return ans;
+        for(int j=0;j<amount+1;j++){
+            if(j%arr[0]==0) dp[0][j]=j/arr[0];
+            else dp[0][j]=(int)1e9;
+        }
+        for(int i=1;i<n;i++){
+            for(int j=0;j<amount+1;j++){
+                int take = (int)1e9;
+                if(j-arr[i]>=0) take = 1 + dp[i][j-arr[i]];
+                int skip = dp[i-1][j];
+                dp[i][j] = Math.min(take,skip);
+            }
+        }
+        int ans = dp[n-1][amount];
         if(ans==(int)1e9) return -1;
         return ans;
     }
