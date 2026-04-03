@@ -1,6 +1,9 @@
 class Solution {
     int helper(int coins[],int amount,int i,int dp[][]){
-        if(i<0) return 0;
+        if(i==0){
+            if(amount%coins[i]==0) return 1;
+            else return 0;
+        }
         if(dp[i][amount]!=-1) return dp[i][amount];
         if(amount==0) return 1;
         int take = 0;
