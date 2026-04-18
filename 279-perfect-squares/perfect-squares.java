@@ -1,16 +1,21 @@
 class Solution {
-    int helper(int n,int i,int dp[][]){
-        if(n==0) return 0;
-        if(n<i*i) return (int)1e9;
-        if(dp[n][i]!=-1) return dp[n][i];
-        int skip = helper(n,i+1,dp);
-        int take = 1+helper(n-i*i,i,dp);
-        return dp[n][i]=Math.min(skip,take);
+    boolean isPerfect(int n){
+        int sqrt = (int)Math.sqrt(n);
+        return sqrt*sqrt == n;
+    }
+    int helper(int n,int dp[]){
+        if(isPerfect(n)) return 1;
+        if(dp[n]!=-1) return dp[n];
+        int min = Integer.MAX_VALUE;
+        for(int i=1;i*i<n;i++){
+            int count = helper(i*i,dp) + helper(n-i*i,dp);
+            min = Math.min(min,count);
+        }
+        return dp[n]=min;
     }
     public int numSquares(int n) {
-        if(n==1) return 1;
-        int dp[][] = new int[n+1][(int)Math.sqrt(n)+1];
-        for(int arr[]:dp) Arrays.fill(arr,-1);
-        return helper(n,1,dp);
+        int dp[]=new int[n+1];
+        Arrays.fill(dp,-1);
+        return helper(n,dp);
     }
 }
