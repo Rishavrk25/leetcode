@@ -1,5 +1,4 @@
 class Solution {
-    int c=0;
     int dfs(int arr[][],int i,int j,boolean visited[][]){
         int m=arr.length;
         int n=arr[0].length;
@@ -10,7 +9,7 @@ class Solution {
             int ni = i + d[0];
             int nj = j + d[1];
             if(ni>=0 && nj>=0 && ni<m && nj<n && !visited[ni][nj] && arr[ni][nj]==1){
-                c+= 1+dfs(arr,ni,nj,visited);
+                c += 1+dfs(arr,ni,nj,visited);
             }
         }
         return c;
