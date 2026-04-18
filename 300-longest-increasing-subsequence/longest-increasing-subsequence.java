@@ -1,15 +1,19 @@
 class Solution {
     public int lengthOfLIS(int[] arr) {
         int n=arr.length;
-        int dp[] = new int[n]; // i pe end hone wale lis ka length store karo
-        Arrays.fill(dp,1);
-        int max=1;
-        for(int i=0;i<n;i++){ 
+        int dp[] = new int[n];
+        int ans = 0;
+        for(int i=0;i<n;i++){
+            int max = 1;
             for(int j=0;j<i;j++){
-               if(arr[j]<arr[i]) dp[i] = Math.max(dp[i],dp[j]+1);
+                if(arr[j]<arr[i]){
+                    max = Math.max(max,dp[j]+1);
+                }
             }
-            max=Math.max(max,dp[i]);
+            dp[i]=max;
+            ans = Math.max(ans,dp[i]);
         }
-        return max;
+        for(int ele:dp) System.out.print(ele+" ");
+        return ans;
     }
 }
