@@ -12,7 +12,7 @@ class Solution {
                     if(dfs(arr,ni,nj,i,j,vis,size+1)) return true;
                 }
                 else{
-                    if(ni!=pi && nj!=pj) return true;
+                    if(ni!=pi || nj!=pj) return true;
                 }
             }
         }
