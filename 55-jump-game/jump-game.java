@@ -8,7 +8,7 @@ class Solution {
         for(int j=1;j<=ele;j++){
             if(helper(arr,i+j,dp)){
                 ans=true;
-                return true;
+                break;
             }
         }
         dp[i] = ans ? 1 : 0;
