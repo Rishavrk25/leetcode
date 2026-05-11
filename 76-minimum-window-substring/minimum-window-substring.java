@@ -4,34 +4,38 @@ class Solution {
         int m=t.length();
         if(n<m) return "";
         Map<Character,Integer> map = new HashMap<>(); // char,freq
+        int countReq = m;
         for(int i=0;i<m;i++){
-            char ch = t.charAt(i);
+            char ch=t.charAt(i);
             if(!map.containsKey(ch)) map.put(ch,1);
             else map.put(ch,map.get(ch)+1);
         }
         int i=0;
         int j=0;
-        int c = m; // required count
-        String ans = "";
+        int start = -1;
+        int minLen = n;
         while(j<n){
-            char ch=s.charAt(j);
+            char ch = s.charAt(j);
             if(map.containsKey(ch)){
                 map.put(ch,map.get(ch)-1);
-                if(map.get(ch)>=0) c--;
+                if(map.get(ch)>=0) countReq--;
             }
-            while(c==0){
-                if(ans.equals("") || (j-i+1)<ans.length()){
-                    ans=s.substring(i,j+1);
+            while(countReq==0){
+                if(j-i+1 <= minLen){
+                    minLen=j-i+1;
+                    start=i;
                 }
-                char ch1 = s.charAt(i);
+                char ch1=s.charAt(i);
                 if(map.containsKey(ch1)){
                     map.put(ch1,map.get(ch1)+1);
-                    if(map.get(ch1)>0) c++;
+                    if(map.get(ch1)>0) countReq++;
                 }
+                
                 i++;
             }
             j++;
         }
-        return ans;
+        if(start==-1) return "";
+        return s.substring(start,start+minLen);
     }
 }
