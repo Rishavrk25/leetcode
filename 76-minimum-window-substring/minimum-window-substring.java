@@ -21,16 +21,15 @@ class Solution {
                 if(map.get(ch)>=0) countReq--;
             }
             while(countReq==0){
-                if(j-i+1 <= minLen){
-                    minLen=j-i+1;
-                    start=i;
-                }
                 char ch1=s.charAt(i);
                 if(map.containsKey(ch1)){
                     map.put(ch1,map.get(ch1)+1);
                     if(map.get(ch1)>0) countReq++;
                 }
-                
+                if(j-i+1 <= minLen){
+                    minLen=j-i+1;
+                    start=i;
+                }
                 i++;
             }
             j++;
